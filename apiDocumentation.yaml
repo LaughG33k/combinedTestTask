@@ -1,0 +1,228 @@
+openapi: 3.0.3
+info:
+  title: TestTask2
+  version: 0.0.1
+paths:
+  /notes:
+    get:
+      description: В заголовке Authorization ставим jwt токен
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema: 
+                type: object
+                required:
+                  - notes
+                properties:
+                  notes:
+                    type: array
+                    items: 
+                      $ref: '#/components/schemas/Note'
+                      
+      
+        '500':
+          description: Iteranl server error
+        '400': 
+          description: bad request
+        '404':
+          description: not found required content
+          
+  
+  /create:
+    post:
+      description: В заголовке Authorization ставим jwt токен
+          
+      requestBody:
+        content:
+          application/json:
+            schema:
+               $ref: '#/components/schemas/Note'
+                  
+      responses:
+        '200':
+          description: ok
+          
+     
+                      
+        '500':
+          description: iternal server error
+        
+        '400':
+          description: Bad request
+          
+        '401':
+          description: not auth
+          
+          
+        
+    
+        
+  /register:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogPas'
+                
+          
+          
+      responses:
+        '200':
+          description: 'ok'
+        '500':
+          description: Iteranl server error
+        '400': 
+          description: bad request
+        '404':
+          description: not found required content
+          
+          
+    
+  /login:
+   post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogPas'
+                
+          
+          
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/JwtAndRt'
+        '500':
+          description: Iteranl server error
+        '400': 
+          description: bad request
+        '404':
+          description: not found required content
+          
+  
+  /logout:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JwtAndRt'
+              
+        
+      
+      responses: 
+        '200':
+          description: ok
+          
+        '500':
+          description: iternal server error
+        
+        '400':
+          description: Bad request
+          
+        '401':
+          description: not auth
+          
+  /update:
+  
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JwtAndRt'
+              
+      
+      responses: 
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/JwtAndRt'
+       
+          
+        '500':
+          description: iternal server error
+        
+        '400':
+          description: Bad request
+          
+        '401':
+          description: not auth
+          
+          
+          
+        
+            
+      
+components:
+  schemas: 
+  
+    
+    Note: 
+      type: object
+      required:
+        - title
+        - content
+
+      properties:
+      
+        title:
+          type: string
+        
+        contnet:
+          type: string
+          
+          
+          
+    LogPas:
+      type: object
+      
+      required:
+        - login
+        - password
+      properties:
+        login:
+          type: string
+        password: 
+          type: string
+          
+          
+    Register:
+      type: object
+      
+      required:
+        - login
+        - password
+        - name 
+        - email
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+        name: 
+          type: string
+        email:
+          type: string
+          
+    JwtAndRt:
+      type: object
+      properties:
+        jwt: 
+          type: string
+        refresh:
+          type: string
+        
+
+      
+      
+        
+        
