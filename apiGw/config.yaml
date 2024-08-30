@@ -1,0 +1,20 @@
+ReadTimeoutInSec: 60
+WriteTimeoutInSec: 60 
+Addr: "127.0.0.1:8080"      
+TimeoutInSec: 45        
+IdleConnTimeoutInSec: 15
+MaxIdleConns: 100         
+MaxConnsPerEndPoint: 300  
+AuthApi: "127.0.0.1:8081"
+EndPoint:
+    
+  - paths: ["/create", /get]
+    addr: "127.0.0.1:8082"
+    onlyVerifConn: true
+    
+    
+  - paths: ["/register", "/login", "/update", "/publicKey", "/logout"]
+    addr: "127.0.0.1:8081"
+    
+
+               

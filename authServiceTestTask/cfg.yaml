@@ -1,0 +1,15 @@
+Addr: "127.0.0.1:8081"
+ReadTimeoutInSec: 45
+WriteTimeoutInSec: 45
+IdleTimeoutInSec: 120
+JwtTimelifeInSec: 900 
+RTTimelifeInHour: 360
+AuthDB:
+  Host: "127.0.0.1"
+  Port: 5432
+  User: "postgres"
+  Password: "123456"
+  DB: "authdb"
+  PoolSize: 300
+  TryAttempts: 3
+  NewConnTimeoutInSec: 15

@@ -1,0 +1,15 @@
+Addr: "127.0.0.1:8082"
+ReadTimeoutInSec: 45
+WriteTimeoutInSec: 45
+IdleTimeoutInSec: 120
+TrustedAddrs: ["127.0.0.1"]
+
+NoteDB:
+  Host: "127.0.0.1"
+  Port: 5432
+  User: "postgres"
+  Password: "123456"
+  DB: "notedb"
+  PoolSize: 300
+  TryAttempts: 3
+  NewConnTimeoutInSec: 15
